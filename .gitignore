@@ -1,0 +1,7 @@
+.terraform/
+environmentVariable.ps1
+id_rsa
+*.tfplan
+*.tfstate
+*.tfstate.backup
+*.terraform.lock.hcl
