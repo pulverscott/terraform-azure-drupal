@@ -3,7 +3,7 @@
 ## Information
 * Deploys and configures Ubuntu 22.04LTS Virtual machine
 * Deploys and configures Azure Flexible Database Server for MySQL
-* Configures LEMP web server server
+* Configures LEMP web server
 * Deploy one or many Drupal websites
 
 
@@ -17,17 +17,16 @@
 * `sudo ln -s /etc/nginx/sites-available/websitename /etc/nginx/sites-enabled/`
 * `sudo systemctl restart nginx`
 
-### Create Drupal Project and change permissions
+### Create Drupal Project
 * `cd /var/www/html`
 * `composer create-project drupal/recommended-project websitename`
-* `sudo chown -R www-data:www-data websitename`
-
-### Composer Extras
-* `composer global require drush/drush`
 
 ### Navigate to site! Don't forget to update your DNS to point to the virtual machine IP address
 
-### Addition Drupal configuration
+## Composer Extras
+* `composer global require drush/drush`
+
+## Addition Drupal configuration
 * SSL database conneciton is turned off by default, this should be turned on by uploading the SSL certificate Azure gives you to the server and updating settings.php file in `/var/www/html/websitename/web/sites/default`
 * Trusted Host settings can also be enabled from the same file
 
