@@ -25,5 +25,5 @@ output "admin_password" {
 }
 
 output "mysql_flexible_server_database_name" {
-  value = azurerm_mysql_flexible_database.main.name
+  value = azurerm_mysql_flexible_database.tsg_drupal.name
 }

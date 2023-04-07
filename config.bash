@@ -1,34 +1,22 @@
 #!/bin/sh
 
-# Update apt
-sudo apt update -y
+# Update
+sudo apt-get update -y
+sudo apt-get dist-upgrade -y
+sudo apt-get upgrade -y
 
-# Install php
-sudo apt install php-cli -y
+# Install Nginx
+sudo apt-get install nginx -y
 
-#Install composer
-EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+# Install dependencies
+sudo apt-get install php-fpm php-mysql php-gd php-cli php-curl php-mbstring php-zip php-opcache php-xml php-apcu -y
 
-if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
-then
-    >&2 echo 'ERROR: Invalid installer checksum'
-    rm composer-setup.php
-    exit 1
-fi
+# Install composer
+sudo apt-get install composer -y
 
-php composer-setup.php --quiet
-RESULT=$?
-rm composer-setup.php
-exit $RESULT
+# Change html permissions
+sudo chown www-data:www-data /var/www/html 
+sudo chmod 775 /var/www/html
 
-# Upgrade software
-sudo apt upgrade -y
-sudo apt dist-upgrade -y
-
-# Create Drupal Project
-composer create-project drupal/recommended-project tsgwebsite
-
-# Install Drush
-composer require drush/drush
+# Add user to www-data group
+sudo adduser azureuser www-data
