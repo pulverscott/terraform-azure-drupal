@@ -10,26 +10,26 @@
 ## Deploy one or multiple websites after Terraform deploy
 
 ### Change Terraform code
-# Add new database to `mysql-fs-db.ft` file and deploy
+* Add new database to `mysql-fs-db.ft` file and deploy
 
 ### Create Nginx Virtual host
-# `sudo vi /etc/nginx/sites-available/websitename` Copy websitename file and update top 2 variables
-# `sudo ln -s /etc/nginx/sites-available/websitename /etc/nginx/sites-enabled/`
-# `sudo systemctl restart nginx`
+* `sudo vi /etc/nginx/sites-available/websitename` Copy websitename file and update top 2 variables
+* `sudo ln -s /etc/nginx/sites-available/websitename /etc/nginx/sites-enabled/`
+* `sudo systemctl restart nginx`
 
 ### Create Drupal Project and change permissions
-# `cd /var/www/html`
-# `composer create-project drupal/recommended-project websitename`
-# `sudo chown -R www-data:www-data websitename`
+* `cd /var/www/html`
+* `composer create-project drupal/recommended-project websitename`
+* `sudo chown -R www-data:www-data websitename`
 
-## Composer Extras
-# `composer global require drush/drush`
+### Composer Extras
+* `composer global require drush/drush`
 
-## Navigate to site! Don't forget to update your DNS to point to the virtual machine IP address
+### Navigate to site! Don't forget to update your DNS to point to the virtual machine IP address
 
-## Addition Drupal configuration
-# SSL database conneciton is turned off by default, this should be turned on by uploading the SSL certificate Azure gives you to the server and updating settings.php file in `/var/www/html/websitename/web/sites/default`
-# Trusted Host settings can also be enabled from the same file
+### Addition Drupal configuration
+* SSL database conneciton is turned off by default, this should be turned on by uploading the SSL certificate Azure gives you to the server and updating settings.php file in `/var/www/html/websitename/web/sites/default`
+* Trusted Host settings can also be enabled from the same file
 
 ## Credits
 * https://learn.microsoft.com/en-us/azure/mysql/flexible-server/quickstart-create-terraform?tabs=azure-cli
