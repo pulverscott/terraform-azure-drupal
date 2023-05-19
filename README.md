@@ -27,7 +27,7 @@
 * `composer global require drush/drush`
 
 ## Addition Drupal configuration
-* SSL database conneciton is turned off by default, this should be turned on by uploading the SSL certificate Azure gives you to the server and updating settings.php file in `/var/www/html/websitename/web/sites/default`
+* SSL database conneciton is turned off by default, this should be turned on by uploading the SSL certificate Azure gives you to the server and updating settings.php file in `/var/www/html/websitename/web/sites/default` The Terraform config for SSL will also need to be changed.
 * Trusted Host settings can also be enabled from the same file
 
 ## Credits
